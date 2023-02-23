@@ -17,6 +17,8 @@ class _ContestListScreenState extends State<ContestListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Contest List"),
+        backgroundColor: Theme.of(context).primaryColor,
+
       ),
       body: SafeArea(
         child: Padding(
@@ -35,7 +37,7 @@ class _ContestListScreenState extends State<ContestListScreen> {
                           .map((e) => ContestWidget(contest: e))
                           .toList());
                 } else {
-                  return Center(
+                  return const Center(
                     child: SizedBox(
                       width: 60,
                       height: 60,
