@@ -1,8 +1,9 @@
 import 'package:codeforces_help/provider/listProvider.dart';
+import 'package:codeforces_help/provider/userProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'mainScreen.dart';
+import 'Screens/menuScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,10 +20,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<ListProvider>(
           create: (context) => ListProvider(),
         ),
+        ChangeNotifierProvider<UserProvider>(
+          create: (context) => UserProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Codeforces help',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
@@ -37,6 +41,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MainScreen();
+    return MenuScreen();
   }
 }
