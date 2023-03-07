@@ -6,6 +6,7 @@ import 'package:codeforces_help/theme/brithness/light.dart';
 import 'package:codeforces_help/theme/theme_handler.dart';
 import 'package:codeforces_help/utils/storageHandler.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/menuScreen.dart';
@@ -71,7 +72,44 @@ class _MyAppState extends State<MyApp> {
         darkTheme: darkTheme,
         theme: lightTheme,
         themeMode: _themeHandler.themeMode,
-        home: MyHomePage(),
+        home: const Splash(),
+      ),
+    );
+  }
+}
+
+class Splash extends StatefulWidget {
+  const Splash({super.key});
+
+  @override
+  State<Splash> createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  void getData() {
+    Future.delayed(const Duration(milliseconds: 5000)).then(
+      (value) => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const MyHomePage()),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: SizedBox(
+          height: 400,
+          width: 400,
+          child: Lottie.asset('assets/json/firstLoading.json'),
+        ),
       ),
     );
   }
@@ -85,7 +123,7 @@ class MyHomePage extends StatelessWidget {
     if (StorageHandler().getUserName() == "") {
       return SignInScreen();
     } else {
-      return MenuScreen();
+      return const MenuScreen();
     }
   }
 }

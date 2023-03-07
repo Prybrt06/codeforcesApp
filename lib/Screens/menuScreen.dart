@@ -58,11 +58,11 @@ class _MenuScreenState extends State<MenuScreen> {
         child: Stack(
           children: [
             Positioned(
-              right: 60,
+              right: 70,
               bottom: 10,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).backgroundColor,
+                  color: StorageHandler().isDarkTheme() ? Colors.white : Colors.blue,
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: IconButton(
@@ -80,11 +80,11 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
             ),
             Positioned(
-              right: 0,
+              right: 10,
               bottom: 10,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).backgroundColor,
+                  color: StorageHandler().isDarkTheme() ? Colors.white : Colors.blue,
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: IconButton(
