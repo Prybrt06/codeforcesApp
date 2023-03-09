@@ -3,6 +3,7 @@ import 'package:codeforces_help/provider/listProvider.dart';
 import 'package:codeforces_help/utils/storageHandler.dart';
 import 'package:codeforces_help/widget/contestWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class ContestListScreen extends StatefulWidget {
@@ -121,10 +122,34 @@ class _ContestListScreenState extends State<ContestListScreen> {
                             .isBefore(DateTime.now()))
                         .toList();
                   }
-                  return ListView(
-                      children: selectedList
-                          .map((e) => ContestWidget(contest: e))
-                          .toList());
+
+                  if (selectedList.isEmpty) {
+                    return SizedBox(
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          LottieBuilder.asset('assets/json/empty.json'),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Text(
+                            '$dropDownValue there is no contest',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return ListView(
+                        children: selectedList
+                            .map((e) => ContestWidget(contest: e))
+                            .toList());
+                  }
                 } else {
                   return const Center(
                     child: SizedBox(
